@@ -5,16 +5,18 @@ import {
   Get,
   Inject,
   NotFoundException,
+  Patch,
   Param,
   ParseIntPipe,
   Post,
   Query,
 } from '@nestjs/common';
 import { VehicleModel } from 'src/domain/models/vehicle.model';
-import { CreateVehicleDto } from './dto/vehicle.dto';
+import { CreateVehicleDto, UpdateVehicleDto } from './dto/vehicle.dto';
 import { VehicleCreateUseCase } from 'src/use-cases/vehicle/vehicle-create.use-case';
 import { GetAllVehicleUseCase } from 'src/use-cases/vehicle/get-all-vehicle.use-case';
 import { GetByIdVehicleUseCase } from 'src/use-cases/vehicle/get-by-id-vehicle.use-case';
+import { UpdateVehicleUseCase } from 'src/use-cases/vehicle/update-vehicle.use-case';
 
 @Controller('vehicles')
 export class VehicleController {
@@ -27,6 +29,9 @@ export class VehicleController {
 
     @Inject(GetByIdVehicleUseCase)
     private readonly _getByIdVehicleUseCase: GetByIdVehicleUseCase,
+
+    @Inject(UpdateVehicleUseCase)
+    private readonly _updateVehicleUseCase: UpdateVehicleUseCase,
   ) {}
 
   @Post()
@@ -63,5 +68,19 @@ export class VehicleController {
     }
 
     return vehicle;
+  }
+
+  @Patch(':id')
+  async update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: UpdateVehicleDto,
+  ): Promise<VehicleModel> {
+    const updatedVehicle = await this._updateVehicleUseCase.execute(id, dto);
+
+    if (!updatedVehicle) {
+      throw new NotFoundException(`Vehicle with id ${id} not found`);
+    }
+
+    return updatedVehicle;
   }
 }

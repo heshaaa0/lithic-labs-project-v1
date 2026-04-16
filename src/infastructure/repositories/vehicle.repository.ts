@@ -17,7 +17,10 @@ export class VehicleRepository {
     return this.toModel(saved);
   }
 
-  async findAll(page = 1, limit = 10): Promise<{
+  async findAll(
+    page = 1,
+    limit = 10,
+  ): Promise<{
     data: VehicleModel[];
     total: number;
     page: number;
@@ -41,6 +44,12 @@ export class VehicleRepository {
   async findById(id: number): Promise<VehicleModel | null> {
     const entity = await this._vehicleRepository.findOne({ where: { id } });
     return entity ? this.toModel(entity) : null;
+  }
+
+  async update(updatedVehicle: VehicleModel): Promise<VehicleModel> {
+    const entity = this._vehicleRepository.create(updatedVehicle);
+    const saved = await this._vehicleRepository.save(entity);
+    return this.toModel(saved);
   }
 
   private toModel(entity: VehicleEntity): VehicleModel {

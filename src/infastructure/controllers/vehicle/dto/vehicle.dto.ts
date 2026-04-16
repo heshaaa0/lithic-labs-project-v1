@@ -21,6 +21,28 @@ export class CreateVehicleDto {
   status?: VehicleStatus;
 }
 
+export class UpdateVehicleDto {
+  @IsOptional()
+  @IsString()
+  title?: string;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(0)
+  hourlyRate?: number;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(0)
+  dailyRate?: number;
+
+  @IsOptional()
+  @IsEnum(VehicleStatus)
+  status?: VehicleStatus;
+}
+
 export class FindAllVehiclesQuery {
   page: number;
   limit: number;

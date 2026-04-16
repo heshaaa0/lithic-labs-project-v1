@@ -7,11 +7,13 @@ import { VehicleRepository } from 'src/infastructure/repositories/vehicle.reposi
 import { VehicleCreateUseCase } from './vehicle/vehicle-create.use-case';
 import { GetAllVehicleUseCase } from './vehicle/get-all-vehicle.use-case';
 import { GetByIdVehicleUseCase } from './vehicle/get-by-id-vehicle.use-case';
+import { UpdateVehicleUseCase } from './vehicle/update-vehicle.use-case';
 
 const useCaseProviders = [
   VehicleCreateUseCase,
   GetAllVehicleUseCase,
   GetByIdVehicleUseCase,
+  UpdateVehicleUseCase,
 ];
 
 const repositoryProviders = [VehicleRepository, BookingRepository];
