@@ -11,10 +11,10 @@ import {
   Query,
 } from '@nestjs/common';
 import { VehicleModel } from 'src/domain/models/vehicle.model';
-import { VehicleRepository } from 'src/infastructure/repositories/vehicle.repository';
 import { CreateVehicleDto } from './dto/vehicle.dto';
 import { VehicleCreateUseCase } from 'src/use-cases/vehicle/vehicle-create.use-case';
 import { GetAllVehicleUseCase } from 'src/use-cases/vehicle/get-all-vehicle.use-case';
+import { GetByIdVehicleUseCase } from 'src/use-cases/vehicle/get-by-id-vehicle.use-case';
 
 @Controller('vehicles')
 export class VehicleController {
@@ -24,6 +24,9 @@ export class VehicleController {
 
     @Inject(GetAllVehicleUseCase)
     private readonly _getAllVehicleUseCase: GetAllVehicleUseCase,
+
+    @Inject(GetByIdVehicleUseCase)
+    private readonly _getByIdVehicleUseCase: GetByIdVehicleUseCase,
   ) {}
 
   @Post()
@@ -31,7 +34,7 @@ export class VehicleController {
     return this._vehicleCreateUseCase.execute(dto);
   }
 
-  @Get()
+  @Get('all')
   async findAll(
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
@@ -51,14 +54,14 @@ export class VehicleController {
     };
   }
 
-  // @Get(':id')
-  // async findById(@Param('id', ParseIntPipe) id: number): Promise<VehicleModel> {
-  //   const vehicle = await this._vehicleRepository.findById(id);
+  @Get(':id')
+  async findById(@Param('id', ParseIntPipe) id: number): Promise<VehicleModel> {
+    const vehicle = await this._getByIdVehicleUseCase.execute(id);
 
-  //   if (!vehicle) {
-  //     throw new NotFoundException(`Vehicle with id ${id} not found`);
-  //   }
+    if (!vehicle) {
+      throw new NotFoundException(`Vehicle with id ${id} not found`);
+    }
 
-  //   return vehicle;
-  // }
+    return vehicle;
+  }
 }
