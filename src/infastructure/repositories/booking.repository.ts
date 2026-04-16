@@ -27,6 +27,27 @@ export class BookingRepository {
     return entity ? this.toModel(entity) : null;
   }
 
+
+  async existsOverlapping(
+    vehicleId: number,
+    pickupDateTime: Date,
+    returnDateTime: Date,
+    excludeBookingId?: number,
+  ): Promise<boolean> {
+    const qb = this._bookingRepository
+      .createQueryBuilder('booking')
+      .where('booking.vehicleId = :vehicleId', { vehicleId })
+      .andWhere('booking.pickupDateTime < :returnDateTime', { returnDateTime })
+      .andWhere('booking.returnDateTime > :pickupDateTime', { pickupDateTime });
+
+    if (excludeBookingId !== undefined) {
+      qb.andWhere('booking.id != :excludeBookingId', { excludeBookingId });
+    }
+
+    const count = await qb.getCount();
+    return count > 0;
+  }
+
   private toModel(entity: BookingEntity): BookingModel {
     return {
       id: entity.id,

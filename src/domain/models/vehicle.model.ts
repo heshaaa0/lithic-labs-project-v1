@@ -9,5 +9,5 @@ export class VehicleModel {
   status: VehicleStatus;
   createdAt: Date;
   updatedAt: Date;
-  booking?: BookingModel;
+  bookings?: BookingModel[];
 }

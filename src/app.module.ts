@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigureModule } from './infastructure/configure/configure.module';
 import { Configuration } from './infastructure/configure/configuration';
+import { BookingController } from './infastructure/controllers/booking/booking.controller';
 import { VehicleController } from './infastructure/controllers/vehicle/vehicle.controller';
 import { BookingEntity } from './infastructure/entity/booking.entity';
 import { VehicleEntity } from './infastructure/entity/vehicle.entity';
@@ -27,7 +28,7 @@ import { UseCaseModule } from './use-cases/use-case.module';
     }),
     UseCaseModule,
   ],
-  controllers: [VehicleController],
+  controllers: [VehicleController, BookingController],
   providers: [AppService],
 })
 export class AppModule {}

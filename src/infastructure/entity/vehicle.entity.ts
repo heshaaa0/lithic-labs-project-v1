@@ -2,7 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -37,6 +37,6 @@ export class VehicleEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToOne(() => BookingEntity, (booking) => booking.vehicle)
-  booking: BookingEntity;
+  @OneToMany(() => BookingEntity, (booking) => booking.vehicle)
+  bookings: BookingEntity[];
 }

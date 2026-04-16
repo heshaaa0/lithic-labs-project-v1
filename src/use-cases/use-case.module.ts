@@ -9,6 +9,9 @@ import { GetAllVehicleUseCase } from './vehicle/get-all-vehicle.use-case';
 import { GetByIdVehicleUseCase } from './vehicle/get-by-id-vehicle.use-case';
 import { UpdateVehicleUseCase } from './vehicle/update-vehicle.use-case';
 import { DeleteVehicleUseCase } from './vehicle/delete-vehicle.use-case';
+import { CreateBookingUseCase } from './booking/create-booking.use-case';
+import { GetAllBookingsUseCase } from './booking/get-all-bookings.use-case';
+import { GetBookingByIdUseCase } from './booking/get-booking-by-id.use-case';
 
 const useCaseProviders = [
   VehicleCreateUseCase,
@@ -16,6 +19,9 @@ const useCaseProviders = [
   GetByIdVehicleUseCase,
   UpdateVehicleUseCase,
   DeleteVehicleUseCase,
+  CreateBookingUseCase,
+  GetAllBookingsUseCase,
+  GetBookingByIdUseCase,
 ];
 
 const repositoryProviders = [VehicleRepository, BookingRepository];

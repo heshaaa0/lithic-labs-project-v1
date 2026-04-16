@@ -3,7 +3,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
-  OneToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { VehicleEntity } from './vehicle.entity';
@@ -14,10 +14,10 @@ export class BookingEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'int', unique: true })
+  @Column({ type: 'int' })
   vehicleId: number;
 
-  @OneToOne(() => VehicleEntity, (vehicle) => vehicle.booking, {
+  @ManyToOne(() => VehicleEntity, (vehicle) => vehicle.bookings, {
     onDelete: 'RESTRICT',
   })
   @JoinColumn({ name: 'vehicleId' })
