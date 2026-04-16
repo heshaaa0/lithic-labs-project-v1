@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   DefaultValuePipe,
+  Delete,
   Get,
   Inject,
   NotFoundException,
@@ -10,6 +11,7 @@ import {
   ParseIntPipe,
   Post,
   Query,
+  BadRequestException,
 } from '@nestjs/common';
 import { VehicleModel } from 'src/domain/models/vehicle.model';
 import { CreateVehicleDto, UpdateVehicleDto } from './dto/vehicle.dto';
@@ -17,6 +19,7 @@ import { VehicleCreateUseCase } from 'src/use-cases/vehicle/vehicle-create.use-c
 import { GetAllVehicleUseCase } from 'src/use-cases/vehicle/get-all-vehicle.use-case';
 import { GetByIdVehicleUseCase } from 'src/use-cases/vehicle/get-by-id-vehicle.use-case';
 import { UpdateVehicleUseCase } from 'src/use-cases/vehicle/update-vehicle.use-case';
+import { DeleteVehicleUseCase } from 'src/use-cases/vehicle/delete-vehicle.use-case';
 
 @Controller('vehicles')
 export class VehicleController {
@@ -32,6 +35,9 @@ export class VehicleController {
 
     @Inject(UpdateVehicleUseCase)
     private readonly _updateVehicleUseCase: UpdateVehicleUseCase,
+
+    @Inject(DeleteVehicleUseCase)
+    private readonly _deleteVehicleUseCase: DeleteVehicleUseCase,
   ) {}
 
   @Post()
@@ -82,5 +88,20 @@ export class VehicleController {
     }
 
     return updatedVehicle;
+  }
+
+  @Delete(':id')
+  async delete(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<{ message: string }> {
+    const deleted = await this._deleteVehicleUseCase.execute(id);
+
+    if (!deleted) {
+      throw new BadRequestException(
+        `Vehicle with id ${id} could not be deleted`,
+      );
+    }
+
+    return { message: 'Vehicle deleted successfully' };
   }
 }

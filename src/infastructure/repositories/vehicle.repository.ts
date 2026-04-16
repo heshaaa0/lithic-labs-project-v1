@@ -52,6 +52,11 @@ export class VehicleRepository {
     return this.toModel(saved);
   }
 
+  async deleteById(id: number): Promise<boolean> {
+    const result = await this._vehicleRepository.delete(id);
+    return (result.affected ?? 0) > 0;
+  }
+
   private toModel(entity: VehicleEntity): VehicleModel {
     return {
       id: entity.id,
