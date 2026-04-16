@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './infastructure/controllers/app.controller';
 import { ConfigureModule } from './infastructure/configure/configure.module';
 import { Configuration } from './infastructure/configure/configuration';
+import { BookingEntity } from './infastructure/entity/booking.entity';
+import { VehicleEntity } from './infastructure/entity/vehicle.entity';
 import { AppService } from './use-cases/app.service';
 import { UseCaseModule } from './use-cases/use-case.module';
 
@@ -19,7 +21,7 @@ import { UseCaseModule } from './use-cases/use-case.module';
         username: configuration.databaseUsername,
         password: configuration.databasePassword,
         database: configuration.databaseName,
-        autoLoadEntities: true,
+        entities: [VehicleEntity, BookingEntity],
         synchronize: configuration.databaseSynchronize,
       }),
     }),
