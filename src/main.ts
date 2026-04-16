@@ -20,7 +20,7 @@ async function bootstrap() {
 
   //swagger configuration
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('Ruhuna Bookings API')
+    .setTitle('Lithic Labs Vehicle Bookings API')
     .setDescription(
       'Vehicle rental booking API: vehicles CRUD, bookings with pricing and overlap rules.',
     )
