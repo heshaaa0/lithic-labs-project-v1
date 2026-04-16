@@ -17,9 +17,25 @@ export class VehicleRepository {
     return this.toModel(saved);
   }
 
-  async findAll(): Promise<VehicleModel[]> {
-    const entities = await this._vehicleRepository.find();
-    return entities.map((entity) => this.toModel(entity));
+  async findAll(page = 1, limit = 10): Promise<{
+    data: VehicleModel[];
+    total: number;
+    page: number;
+    limit: number;
+  }> {
+    const skip = (page - 1) * limit;
+
+    const [entities, total] = await this._vehicleRepository.findAndCount({
+      skip: skip,
+      take: limit,
+      order: { id: 'ASC' },
+    });
+    return {
+      data: entities.map((entity) => this.toModel(entity)),
+      total: total,
+      page: page,
+      limit: limit,
+    };
   }
 
   async findById(id: number): Promise<VehicleModel | null> {

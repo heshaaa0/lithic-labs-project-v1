@@ -5,8 +5,9 @@ import { VehicleEntity } from 'src/infastructure/entity/vehicle.entity';
 import { BookingRepository } from 'src/infastructure/repositories/booking.repository';
 import { VehicleRepository } from 'src/infastructure/repositories/vehicle.repository';
 import { VehicleCreateUseCase } from './vehicle/vehicle-create.use-case';
+import { GetAllVehicleUseCase } from './vehicle/get-all-vehicle.use-case';
 
-const useCaseProviders = [VehicleCreateUseCase];
+const useCaseProviders = [VehicleCreateUseCase, GetAllVehicleUseCase];
 
 const repositoryProviders = [VehicleRepository, BookingRepository];
 @Module({

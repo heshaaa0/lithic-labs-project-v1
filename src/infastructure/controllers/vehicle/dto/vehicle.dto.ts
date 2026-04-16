@@ -20,3 +20,8 @@ export class CreateVehicleDto {
   @IsEnum(VehicleStatus)
   status?: VehicleStatus;
 }
+
+export class FindAllVehiclesQuery {
+  page: number;
+  limit: number;
+}
