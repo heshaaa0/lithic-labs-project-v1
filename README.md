@@ -3,7 +3,7 @@
 A RESTful API for managing **vehicle rentals and bookings**, including pricing logic and overlap validation.
 
 ---
- Project Setup Instructions
+ ## Project Setup Instructions
 1. Clone the repository
 git clone https://github.com/heshaaa0/lithic-labs-project-v1.git
 cd lithic-labs-project-v1
@@ -25,8 +25,8 @@ DB_USER=root
 DB_PASSWORD=root
 DB_NAME=vehicle-book-db
 
-🗄️ Database Setup
-Option 1: Using Docker (Recommended)
+## Database Setup
+# Option 1: Using Docker (Recommended)
 
 docker compose up -d
 
@@ -36,16 +36,16 @@ Start the database container
 Connect backend service
 Apply configuration
 
-Option 2: Manual Setup (PostgreSQL example)
+# Option 2: Manual Setup (PostgreSQL example)
 Install PostgreSQL
 Create database:
 CREATE DATABASE vehicle-book-db;
 
-🚀 How to Run Locally
+## How to Run Locally
 
 npm run start:dev
 
-🐳 Run with Docker (Recommended)
+## Run with Docker (Recommended)
 docker compose up --build
 
 Run in background:
