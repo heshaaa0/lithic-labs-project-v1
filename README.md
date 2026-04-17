@@ -109,7 +109,9 @@ Stop containers:
 
 ### Update Vehicle
 All fields are optional
+
 `PATCH /vehicles/{id}`
+
 **Body**
 
 ```json
