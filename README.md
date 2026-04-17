@@ -26,7 +26,7 @@ DB_PASSWORD=root
 DB_NAME=vehicle-book-db
 
 ## Database Setup
-# Option 1: Using Docker (Recommended)
+### Option 1: Using Docker (Recommended)
 
 docker compose up -d
 
@@ -36,7 +36,7 @@ Start the database container
 Connect backend service
 Apply configuration
 
-# Option 2: Manual Setup (PostgreSQL example)
+### Option 2: Manual Setup (PostgreSQL)
 Install PostgreSQL
 Create database:
 CREATE DATABASE vehicle-book-db;
