@@ -108,8 +108,18 @@ Stop containers:
 ---
 
 ### Update Vehicle
-
+All fields are optional
 `PATCH /vehicles/{id}`
+**Body**
+
+```json
+{
+  "title": "Toyota Corolla",
+  "hourlyRate": 2500,
+  "dailyRate": 12000,
+  "status": "inactive"
+}
+```
 
 ---
 
