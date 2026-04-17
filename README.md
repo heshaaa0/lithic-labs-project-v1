@@ -15,7 +15,7 @@ npm install
 
 Create a .env file in the root directory:
 
-* cp .env.example .env
+* development.env
 
 Update required environment variables such as:
 
