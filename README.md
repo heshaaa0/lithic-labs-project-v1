@@ -19,11 +19,11 @@ cp .env.example .env
 
 Update required environment variables such as:
 
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=root
-DB_PASSWORD=root
-DB_NAME=vehicle-book-db
+* DB_HOST=localhost
+* DB_PORT=5432
+* DB_USER=root
+* DB_PASSWORD=root
+* DB_NAME=vehicle-book-db
 
 ## Database Setup
 ### Option 1: Using Docker (Recommended)
@@ -32,29 +32,30 @@ docker compose up -d
 
 This will automatically:
 
-Start the database container
-Connect backend service
-Apply configuration
+* Start the database container
+* Connect backend service
+* Apply configuration
 
 ### Option 2: Manual Setup (PostgreSQL)
 Install PostgreSQL
 Create database:
-CREATE DATABASE vehicle-book-db;
+
+* CREATE DATABASE vehicle-book-db;
 
 ## How to Run Locally
 
-npm run start:dev
+* npm run start:dev
 
 ## Run with Docker (Recommended)
-docker compose up --build
+* docker compose up --build
 
 Run in background:
 
-docker compose up -d --build
+* docker compose up -d --build
 
 Stop containers:
 
-docker compose down
+* docker compose down
 
 ## Live API
 
