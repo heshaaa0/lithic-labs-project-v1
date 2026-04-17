@@ -5,8 +5,8 @@ A RESTful API for managing **vehicle rentals and bookings**, including pricing l
 ---
  ## Project Setup Instructions
 1. Clone the repository
-git clone https://github.com/heshaaa0/lithic-labs-project-v1.git
-cd lithic-labs-project-v1
+* git clone https://github.com/heshaaa0/lithic-labs-project-v1.git
+* cd lithic-labs-project-v1
 
 2. Install dependencies
 npm install
@@ -15,7 +15,7 @@ npm install
 
 Create a .env file in the root directory:
 
-cp .env.example .env
+* cp .env.example .env
 
 Update required environment variables such as:
 
