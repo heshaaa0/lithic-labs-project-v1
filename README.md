@@ -1,17 +1,17 @@
-# 🚗 Lithic Labs Vehicle Bookings API
+# Lithic Labs Vehicle Bookings API
 
 A RESTful API for managing **vehicle rentals and bookings**, including pricing logic and overlap validation.
 
 ---
 
-## 🌍 Live API
+## Live API
 
 * Base URL: http://13.233.111.98:3000
 * Swagger Docs: http://13.233.111.98:3000/api
 
 ---
 
-## 📦 Features
+## Features
 
 * Vehicle CRUD operations
 * Booking creation with:
@@ -23,9 +23,9 @@ A RESTful API for managing **vehicle rentals and bookings**, including pricing l
 
 ---
 
-## 🚘 Vehicle Endpoints
+## Vehicle Endpoints
 
-### ➕ Create Vehicle
+### Create Vehicle
 
 `POST /vehicles`
 
@@ -42,33 +42,33 @@ A RESTful API for managing **vehicle rentals and bookings**, including pricing l
 
 ---
 
-### 📄 Get All Vehicles (Paginated)
+### Get All Vehicles (Paginated)
 
 `GET /vehicles/all?page=1&limit=10`
 
 ---
 
-### 🔍 Get Vehicle by ID
+### Get Vehicle by ID
 
 `GET /vehicles/{id}`
 
 ---
 
-### ✏️ Update Vehicle
+### Update Vehicle
 
 `PATCH /vehicles/{id}`
 
 ---
 
-### ❌ Delete Vehicle
+### Delete Vehicle
 
 `DELETE /vehicles/{id}`
 
 ---
 
-## 📅 Booking Endpoints
+## Booking Endpoints
 
-### ➕ Create Booking
+### Create Booking
 
 `POST /bookings`
 
@@ -92,21 +92,21 @@ A RESTful API for managing **vehicle rentals and bookings**, including pricing l
 
 ---
 
-### 📄 Get All Bookings
+### Get All Bookings
 
 `GET /bookings`
 
 ---
 
-### 🔍 Get Booking by ID
+### Get Booking by ID
 
 `GET /bookings/{id}`
 
 ---
 
-## 📊 Data Models
+## Data Models
 
-### 🚘 Vehicle
+### Vehicle
 
 | Field      | Type              | Description       |
 | ---------- | ----------------- | ----------------- |
@@ -120,7 +120,7 @@ A RESTful API for managing **vehicle rentals and bookings**, including pricing l
 
 ---
 
-### 📅 Booking
+### Booking
 
 | Field          | Type           | Description       |
 | -------------- | -------------- | ----------------- |
@@ -134,7 +134,7 @@ A RESTful API for managing **vehicle rentals and bookings**, including pricing l
 
 ---
 
-## ⚠️ Error Handling
+## Error Handling
 
 | Code | Meaning                                    |
 | ---- | ------------------------------------------ |
@@ -144,7 +144,7 @@ A RESTful API for managing **vehicle rentals and bookings**, including pricing l
 
 ---
 
-## 🐳 Running the Project
+## Running the Project
 
 ```bash
 docker compose up --build
@@ -152,7 +152,7 @@ docker compose up --build
 
 ---
 
-## 🧪 Local Development
+## Local Development
 
 ```bash
 npm install
@@ -161,7 +161,7 @@ npm run start:dev
 
 ---
 
-## 📌 Notes
+## Notes
 
 * API follows REST principles
 * All timestamps use ISO 8601 format
@@ -169,6 +169,6 @@ npm run start:dev
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Hesha Edmon
